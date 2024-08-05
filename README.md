@@ -1,6 +1,6 @@
-# deleteTweets
+# TweetDeleter
 
-DeleteTweets is a Chrome extension designed to help you easily delete all your tweets.
+TweetDeleter is a Chrome extension designed to help you easily delete all your tweets.
 
 ## Features
 
