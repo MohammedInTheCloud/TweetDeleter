@@ -17,12 +17,6 @@ body {
   padding: 0;
 }
 
-.container {
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
 
 header {
   background-color: rgba(0, 120, 212, 0.85);
@@ -42,7 +36,7 @@ main {
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
 label {
@@ -99,34 +93,67 @@ input[type="checkbox"] {
   display: none;
 }
 
-input[type="checkbox"]:checked + .toggle-slider {
+input[type="checkbox"]:checked+.toggle-slider {
   background-color: var(--primary-color);
 }
 
-input[type="checkbox"]:checked + .toggle-slider::before {
+input[type="checkbox"]:checked+.toggle-slider::before {
   transform: translateX(20px);
 }
+
 .username-input {
-  width: 80%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 2px;
+  font-size: 14px;
+  color: var(--text-color);
+  background-color: white;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  /* Include padding and border in the element's total width */
 }
+
+.username-input:hover {
+  border-color: var(--text-color);
+}
+
+.username-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+.username-input::placeholder {
+  color: var(--secondary-color);
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
 .primary-button {
   width: 100%;
-  padding: 10px;
+  padding: 10px 12px;
   background-color: var(--primary-color);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 2px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.1s ease;
+  font-size: 14px;
+  font-weight: 600;
+  box-sizing: border-box;
+  /* Include padding and border in the element's total width */
 }
 
 .primary-button:hover {
   background-color: #005a9e;
-  transform: scale(1.02);
 }
 
 .primary-button:active {
@@ -156,7 +183,9 @@ input[type="checkbox"]:checked + .toggle-slider::before {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .date-inputs {
@@ -190,4 +219,3 @@ input[type="checkbox"]:checked + .toggle-slider::before {
 .notification.error {
   background-color: var(--error-color);
 }
-
