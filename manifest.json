@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Tweet Deleter",
+  "version": "0.1",
+  "description": "Listens to specific requests and obtains information",
+  "permissions": [
+    "webRequest",
+    "storage",
+    "cookies"
+  ],
+  "host_permissions": [
+    "https://x.com/*",
+    "https://twitter.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background/background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://twitter.com/*",
+        "https://x.com/*"
+      ],
+      "js": [
+        "src/content/contentScript.js"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup/popup.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/content/contentScriptInjector.js",
+        "src/utils/tweetDeleter.js",
+        "src/utils/storage.js"
+      ],
+      "matches": [
+        "https://twitter.com/*",
+        "https://x.com/*"
+      ]
+    }
+  ]
+}

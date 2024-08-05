@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tweet Deleter</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Tweet Deleter</h1>
+        </header>
+        <main>
+            <input type="text" id="usernameInput" placeholder="Enter your Twitter username" class="username-input">
+            <button type="button" id="deleteButton" class="primary-button">Start Deletion</button>
+            <div id="status" class="status"></div>
+            <div id="loading" class="loading" style="display: none;">
+                <div class="spinner"></div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="popup.js"></script>
+</body>
+</html>
