@@ -15,8 +15,10 @@ DeleteTweets is a Chrome extension designed to help you easily delete all your t
 
 ## Usage
 
-1. Visit twitter.com or x.com and interact with the site to trigger the target request.
+1. Visit x.com and interact with the site to trigger the target request.
 2. Click on the extension icon in the Chrome toolbar to view the captured information, including cookies.
+3. **Refresh the page before starting to delete.**
+4. Enter your username.
 
 ## Development
 
@@ -79,14 +81,14 @@ For more detailed troubleshooting, check the browser console for any error messa
 
 ## Acknowledgments
 
-This project is based on the work of [lolarchiver](https://github.com/Lyfhael/DeleteTweets). I'd like to express our gratitude for their original script that formed the foundation of this Chrome extension. 
+This project is based on the work of [lolarchiver](https://github.com/Lyfhael/DeleteTweets). I'd like to express my gratitude for their original script that formed the foundation of this Chrome extension. 
 
 ### Original Repository
 - **Repository**: [deleteTweets](https://github.com/Lyfhael/DeleteTweets)
 - **Author**: lolarchiver
 - **Description**: A script for bulk deleting tweets with various filtering options.
 
-We've adapted and extended the original work to create this Chrome extension, We encourage users to check out the original repository for more information on the core tweet deletion functionality.
+I've adapted and extended the original work to create this Chrome extension. I encourage users to check out the original repository for more information on the core tweet deletion functionality.
 
 If you find this extension helpful, consider supporting the original author:
 - [Ko-fi: lolarchiver](https://ko-fi.com/lolarchiver)
