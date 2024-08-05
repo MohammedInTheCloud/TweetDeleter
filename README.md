@@ -20,6 +20,10 @@ DeleteTweets is a Chrome extension designed to help you easily delete all your t
 3. **Refresh the page before starting to delete.**
 4. Enter your username.
 
+
+https://github.com/user-attachments/assets/ea65097e-bff1-46e4-8b78-a527e942c232
+
+
 ## Development
 
 The extension is structured as follows:
