@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Tweet Deleter",
+  "name": "Tweet Manger",
   "version": "0.1",
   "description": "Listens to specific requests and obtains information",
   "permissions": [
