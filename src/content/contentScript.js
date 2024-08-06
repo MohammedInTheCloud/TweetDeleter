@@ -23,7 +23,6 @@ window.addEventListener('message', function (event) {
 
   switch (event.data.type) {
     case 'REQUEST_INFO_CAPTURED':
-      console.log('Request info captured:', event.data.requestInfo);
       chrome.storage.local.set({ requestInfo: event.data.requestInfo });
       break;
     case 'DELETION_COMPLETE':
@@ -42,6 +41,11 @@ window.addEventListener('message', function (event) {
           requestInfo: data.requestInfo || null
         }, '*');
       });
+      break;
+    case 'UNLIKING_COMPLETE':
+    case 'UNLIKING_ERROR':
+      // Forward unliking results to the popup
+      chrome.runtime.sendMessage(event.data).catch(error => console.error('Error sending message to popup:', error));
       break;
     case 'SAVE_USERNAME':
       chrome.storage.local.set({ username: event.data.username });
@@ -62,9 +66,13 @@ window.addEventListener('message', function (event) {
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   console.log('Received message from popup:', message);
 
-  if (message.type === 'START_DELETION') {
-    // Forward the start deletion message to the injected script
-    window.postMessage({ type: 'START_DELETION', options: message.options }, '*');
+  if (message.type === 'START_DELETION' || message.type === 'START_UNLIKING') {
+    // Forward the start deletion or unliking message to the injected script
+    window.postMessage({
+      type: message.type,
+      options: message.options,
+      username: message.username
+    }, '*');
     return true; // Indicates that the response is sent asynchronously
   }
 });

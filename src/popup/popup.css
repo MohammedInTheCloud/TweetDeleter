@@ -160,6 +160,27 @@ input[type="checkbox"]:checked+.toggle-slider::before {
   transform: scale(0.98);
 }
 
+.secondary-button {
+  width: 100%;
+  padding: 10px 12px;
+  background-color: #3c0000; /* Twitter blue */
+  color: white;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.secondary-button:hover {
+  background-color: #0e0000;
+}
+
+.secondary-button:active {
+  transform: scale(0.98);
+}
 .status {
   margin-top: 15px;
   text-align: center;

@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tweet Deleter</title>
+    <title>Tweet Manager</title>
     <link rel="stylesheet" href="popup.css">
 </head>
-
 <body>
     <div class="container">
         <header>
-            <h1>Tweet Deleter</h1>
+            <h1>Tweet Manager</h1>
         </header>
         <main>
             <div class="form-group">
@@ -19,6 +17,7 @@
                 <input type="text" id="usernameInput" class="username-input" placeholder="Enter your username">
             </div>
             <button type="button" id="deleteButton" class="primary-button">Start Deletion</button>
+            <button type="button" id="unlikeButton" class="secondary-button">Unlike Tweets</button>
             <div id="status" class="status"></div>
             <div id="loading" class="loading" style="display: none;">
                 <div class="spinner"></div>
@@ -27,5 +26,4 @@
     </div>
     <script type="module" src="popup.js"></script>
 </body>
-
 </html>

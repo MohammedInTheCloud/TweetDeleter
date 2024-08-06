@@ -35,7 +35,10 @@
       "resources": [
         "src/content/contentScriptInjector.js",
         "src/utils/tweetDeleter.js",
-        "src/utils/storage.js"
+        "src/utils/storage.js",
+        "src/utils/likeManager.js",
+        "src/utils/requestInterceptor.js",
+        "src/utils/cookieUtils.js"
       ],
       "matches": [
         "https://twitter.com/*",
