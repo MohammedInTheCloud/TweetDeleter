@@ -1,6 +1,6 @@
-# Tweet Manager
+# deleteTweets
 
-Tweet Manager is a Chrome extension designed to help you easily manage your tweets and likes on Twitter/X.
+DeleteTweets is a Chrome extension designed to help you easily delete all your tweets.
 
 ## Features
 
