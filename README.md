@@ -1,6 +1,6 @@
-# deleteTweets
+# Twitter Manger
 
-DeleteTweets is a Chrome extension designed to help you easily delete all your tweets.
+Twitter Manger is a Chrome extension designed to help you easily delete all your tweets.
 
 ## Features
 
