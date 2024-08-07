@@ -1,6 +1,6 @@
 # Twitter Manager
 
-Twitter Manager is an advanced Chrome extension designed to enhance your Twitter experience. It offers tweet management features and real-time sentence improvement powered by AI.
+Twitter Manager is an experimental Chrome extension designed to enhance your Twitter experience. It offers tweet management features, real-time sentence improvement, and AI-powered ad detection, all powered by Ollama .
 
 ## Disclaimer
 
