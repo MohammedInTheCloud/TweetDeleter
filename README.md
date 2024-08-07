@@ -137,10 +137,10 @@ The sentence improvement feature is designed to use the Ollama AI service. Howev
 - The extension uses a proxy server to communicate with Ollama.
 - Future updates will enable direct Ollama integration.
 - I'm using this to run Ollama: https://github.com/MohammedInTheCloud/tired. To run it, use the following commands:
-"
+
    > pnpm install
    > node server
-"
+
 
 **Ollama integration is a work in progress. Current implementation
 is a placeholder and will be fully implemented in future updates.**
