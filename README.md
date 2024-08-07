@@ -135,7 +135,7 @@ The sentence improvement feature is designed to use the Ollama AI service. Howev
 
 - Direct integration with Ollama is not yet available.
 - The extension uses a proxy server to communicate with Ollama.
-- Future updates will enable direct Ollama integration.
+- Future updates will enable tooltips on the search engine and when writing tweets. Currently, you can find improved text in the dev tool.
 - I'm using this to run Ollama: https://github.com/MohammedInTheCloud/tired. To run it, use the following commands:
 
    > pnpm install
