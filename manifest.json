@@ -50,7 +50,11 @@
         "src/utils/storage.js",
         "src/utils/likeManager.js",
         "src/utils/requestInterceptor.js",
-        "src/utils/cookieUtils.js"
+        "src/utils/cookieUtils.js",
+        "src/grammer/textBoxDetector.js",
+        "src/grammer/sentenceImprover.js",
+        "src/services/ollamaService.js",
+        "src/utils/debounce.js"
       ],
       "matches": [
         "https://twitter.com/*",

@@ -59,7 +59,20 @@ window.addEventListener('message', function (event) {
         }, '*');
       });
       break;
-  }
+      case 'OLLAMA_QUERY':
+        chrome.runtime.sendMessage({
+          action: "queryOllama",
+          data: event.data.data
+        }, response => {
+          window.postMessage({
+            type: "OLLAMA_RESPONSE",
+            success: response.success,
+            data: response.data,
+            error: response.error
+          }, "*");
+        });
+        break;
+    }
 });
 
 // Listen for messages from the popup

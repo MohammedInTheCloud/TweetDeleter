@@ -1,11 +1,12 @@
-# Twitter Manger
+# Twitter Manager Pro
 
-Twitter Manager is a Chrome extension designed to help you easily delete all your tweets and remove all your likes.
+Twitter Manager Pro is an advanced Chrome extension designed to enhance your Twitter experience. It offers tweet management features and real-time sentence improvement powered by AI.
 
 ## Features
 
 - Delete All Tweets: Effortlessly remove all your tweets with a single click.
 - Unlike All Tweets: Quickly remove all your likes from tweets.
+- AI-Powered Sentence Improvement: Get real-time suggestions to enhance your tweets as you type.
 
 ## Installation
 
@@ -16,11 +17,15 @@ Twitter Manager is a Chrome extension designed to help you easily delete all you
 
 ## Usage
 
-1. Visit x.com and interact with the site to trigger the target request.
+1. Visit x.com (Twitter) and interact with the site to trigger the target request.
 2. Click on the extension icon in the Chrome toolbar to open the popup.
-3. Enter your Twitter/X username.
-4. Choose to either delete tweets or unlike tweets by clicking the respective button.
-5. Wait for the process to complete. You'll see a notification when it's done.
+3. For tweet management:
+   - Enter your Twitter/X username.
+   - Choose to either delete tweets or unlike tweets by clicking the respective button.
+   - Wait for the process to complete. You'll see a notification when it's done.
+4. For sentence improvement:
+   - Start typing in any text input field on Twitter.
+   - After a brief pause, you'll see AI-suggested improvements for your text.
 
 ## Development
 
@@ -29,18 +34,26 @@ The extension is structured as follows:
 - `src/background/`: Contains the background script.
 - `src/config/`: Contains configuration constants.
 - `src/content/`: Contains the content scripts for interacting with the webpage.
+- `src/grammer/`: Houses the AI-powered sentence improvement functionality.
+- `src/icons/`: Contains extension icons.
 - `src/popup/`: Contains the popup HTML, JS, and CSS for the user interface.
+- `src/services/`: Contains service classes, including the Ollama service for AI integration.
 - `src/utils/`: Contains utility functions and classes for various operations.
 
 ### Key Files
 
+- `background.js`: Manages background processes and communication.
 - `contentScript.js`: Injects the main functionality into the webpage.
 - `contentScriptInjector.js`: Coordinates between the popup and the main functionality.
+- `sentenceImprover.js`: Handles the AI-powered sentence improvement logic.
+- `textBoxDetector.js`: Detects and processes text input for improvement.
+- `ollamaService.js`: Manages communication with the Ollama AI service.
 - `likeManager.js`: Handles the unlike functionality.
 - `tweetDeleter.js`: Manages the tweet deletion process.
 - `requestInterceptor.js`: Intercepts and analyzes web requests.
 - `cookieUtils.js`: Handles cookie-related operations.
 - `storage.js`: Manages local storage operations.
+- `debounce.js`: Provides debounce functionality for optimized performance.
 
 ## Contributing
 
@@ -58,35 +71,9 @@ This extension requires the following permissions:
 - cookies: To access and retrieve specific cookies
 - Host permissions for x.com and twitter.com
 
-## Structure:
-``````
-|-- deleteTweets.md
-|-- LICENSE
-|-- manifest.json
-|-- README.md
--- src
-    |-- background
-    |   -- background.js
-    |-- config
-    |   -- constants.js
-    |-- content
-    |   |-- contentScript.js
-    |   -- contentScriptInjector.js
-    |-- popup
-    |   |-- popup.css
-    |   |-- popup.html
-    |   -- popup.js
-    -- utils
-        |-- cookieUtils.js
-        |-- likeManager.js
-        |-- requestInterceptor.js
-        |-- storage.js
-        -- tweetDeleter.js
-``````
-
 ## Acknowledgments
 
-This project is based on the work of [lolarchiver](https://github.com/Lyfhael/DeleteTweets). We've adapted and extended the original work to create this Chrome extension with additional features.
+This project is based on the work of [lolarchiver](https://github.com/Lyfhael/DeleteTweets). We've significantly expanded upon the original work to create this feature-rich Chrome extension.
 
 ### Original Repository
 - **Repository**: [deleteTweets](https://github.com/Lyfhael/DeleteTweets)
@@ -96,3 +83,7 @@ If you find this extension helpful, consider supporting the original author:
 - [Ko-fi: lolarchiver](https://ko-fi.com/lolarchiver)
 
 Please note that while we've built upon the original work, any issues with this Chrome extension should be reported in this repository.
+
+## Note on AI Integration
+
+The sentence improvement feature uses the Ollama AI service. Ensure you have the Ollama service running locally or adjust the `ollamaService.js` file to point to your preferred AI service endpoint.
