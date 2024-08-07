@@ -117,7 +117,7 @@ This project is based on the work of [lolarchiver](https://github.com/Lyfhael/De
 - **Repository**: [ollama](https://github.com/ollama/ollama)
 - **Author**: jmorganca , mchiang0610
 
-
+Also thanks to Mistral, Google, and Meta for their open-sourced LLM models.
 If you find this extension helpful, consider supporting the original author:
 - [Ko-fi: lolarchiver](https://ko-fi.com/lolarchiver)
 
