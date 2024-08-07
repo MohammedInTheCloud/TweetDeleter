@@ -1,6 +1,6 @@
-# Twitter Manager Pro
+# Twitter Manager
 
-Twitter Manager Pro is an advanced Chrome extension designed to enhance your Twitter experience. It offers tweet management features and real-time sentence improvement powered by AI.
+Twitter Manager is an advanced Chrome extension designed to enhance your Twitter experience. It offers tweet management features and real-time sentence improvement powered by AI.
 
 ## Features
 
