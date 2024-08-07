@@ -2,6 +2,19 @@
 
 Twitter Manager is an advanced Chrome extension designed to enhance your Twitter experience. It offers tweet management features and real-time sentence improvement powered by AI.
 
+## Disclaimer
+
+This Twitter Manager Chrome extension is a fun, experimental project that I'm using to play around with various technologies and concepts. It's important to note:
+
+1. This is not an official Twitter/X product or service.
+2. The project is primarily for learning and experimentation purposes.
+3. Features may not be fully implemented or may change without notice.
+4. Use this extension at your own risk. I'm not responsible for any unintended consequences of using this extension on your Twitter/X account.
+5. The AI-powered features are still in development and may not function as described.
+6. This project is not intended for serious or professional use.
+
+Remember, the main goal here is to have fun and learn! If you decide to use or contribute to this project, please approach it with a spirit of curiosity and adventure. Enjoy tinkering!
+
 ## Features
 
 - Delete All Tweets: Effortlessly remove all your tweets with a single click.
