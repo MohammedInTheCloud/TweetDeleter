@@ -1,6 +1,6 @@
-# Twitter Manager Pro
+# Twitter Manager
 
-Twitter Manager Pro is an advanced Chrome extension designed to enhance your Twitter experience. It offers tweet management features and real-time sentence improvement powered by AI.
+Twitter Manager is an advanced Chrome extension designed to enhance your Twitter experience. It offers tweet management features and real-time sentence improvement powered by AI.
 
 ## Features
 
@@ -71,6 +71,42 @@ This extension requires the following permissions:
 - cookies: To access and retrieve specific cookies
 - Host permissions for x.com and twitter.com
 
+## Structure:
+``````
+|-- LICENSE
+|-- manifest.json
+|-- README.md
+-- src
+    |-- background
+    |   -- background.js
+    |-- config
+    |   -- constants.js
+    |-- content
+    |   |-- contentScript.js
+    |   -- contentScriptInjector.js
+    |-- grammer
+    |   |-- sentenceImprover.js
+    |   -- textBoxDetector.js
+    |-- icons
+    |   |-- icon128.png
+    |   |-- icon16.png
+    |   |-- icon32.png
+    |   -- icon48.png
+    |-- popup
+    |   |-- popup.css
+    |   |-- popup.html
+    |   -- popup.js
+    |-- services
+    |   -- ollamaService.js
+    -- utils
+        |-- cookieUtils.js
+        |-- debounce.js
+        |-- likeManager.js
+        |-- requestInterceptor.js
+        |-- storage.js
+        -- tweetDeleter.js
+``````
+
 ## Acknowledgments
 
 This project is based on the work of [lolarchiver](https://github.com/Lyfhael/DeleteTweets). We've significantly expanded upon the original work to create this feature-rich Chrome extension.
@@ -78,12 +114,24 @@ This project is based on the work of [lolarchiver](https://github.com/Lyfhael/De
 ### Original Repository
 - **Repository**: [deleteTweets](https://github.com/Lyfhael/DeleteTweets)
 - **Author**: lolarchiver
+- **Repository**: [ollama](https://github.com/ollama/ollama)
+- **Author**: jmorganca , mchiang0610
+
 
 If you find this extension helpful, consider supporting the original author:
 - [Ko-fi: lolarchiver](https://ko-fi.com/lolarchiver)
 
 Please note that while we've built upon the original work, any issues with this Chrome extension should be reported in this repository.
 
+
+
 ## Note on AI Integration
 
-The sentence improvement feature uses the Ollama AI service. Ensure you have the Ollama service running locally or adjust the `ollamaService.js` file to point to your preferred AI service endpoint.
+The sentence improvement feature is designed to use the Ollama AI service. However, in the current implementation:
+
+- Direct integration with Ollama is not yet available.
+- The extension uses a proxy server to communicate with Ollama.
+- Future updates will enable direct Ollama integration.
+
+**Ollama integration is a work in progress. Current implementation
+is a placeholder and will be fully implemented in future updates.**
