@@ -14,26 +14,14 @@ class ContentScriptInjector {
         this.tweetDeleter = new TweetDeleter();
         this.cachedRequestInfo = null;
         this.requestInterceptor = new RequestInterceptor(ContentScriptInjector.TARGET_URL, this.captureRequestInfo.bind(this));
-        this.textBoxDetector = new TextBoxDetector();
     }
 
     init() {
         console.log('Content script injector loaded');
         this.requestInterceptor.init();
         this.setupEventListeners();
-        this.textBoxDetector.init((originalText, improvedText) => {
-            console.log('Original text:', originalText);
-            console.log('Improved text:', improvedText);
-            this.handleImprovedText(originalText, improvedText);
-        }).catch(error => {
-            console.error('Error initializing TextBoxDetector:', error);
-        });
     }
     
-    handleImprovedText(originalText, improvedText) {
-        // For now, just log the improvement. UI implementation will come later.
-        console.log('Suggestion:', improvedText);
-    }
 
     captureRequestInfo(xhr) {
         const requestInfo = this.extractRequestInfo(xhr);

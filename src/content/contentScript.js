@@ -10,6 +10,8 @@ function injectScript(file_path) {
 }
 
 injectScript('src/content/contentScriptInjector.js');
+injectScript('src/content/textImprover.js');
+injectScript('src/utils/tooltipManager.js');
 
 // Listen for messages from the injected script
 window.addEventListener('message', function (event) {

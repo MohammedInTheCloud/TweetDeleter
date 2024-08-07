@@ -55,8 +55,10 @@ class SentenceImprover {
     }
 
     async improveText(text) {
-        const prompt = `Improve the following sentence , Enclose in an XML block with tags <improved>: <text>${text}</text> Return only the XML blocks without any additional explanation.`;
-        return await this.ollamaService.query('gemma2:2b', prompt, { stream: false });
+        const prompt = `Proofread and improve the following sentence , adjusting it to match a "Academic" tone. If improvements are needed, enclose the result in <improved> tags. If no improvements are needed, enclose the original text in <noneed> tags.
+
+        Sentence to proofread (aiming for a "Academic" tone) ,  Do not include any explanations or additional XML/HTML tags or comments :
+        <sentence>${text}</sentence>`; return await this.ollamaService.query('gemma2:2b', prompt, { stream: false });
     }
 }
 

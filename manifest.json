@@ -23,7 +23,11 @@
         "https://x.com/*"
       ],
       "js": [
+        "src/lib/tippy.js",
         "src/content/contentScript.js"
+      ],
+      "css": [
+        "src/lib/tippy.css"
       ]
     }
   ],
@@ -46,6 +50,7 @@
     {
       "resources": [
         "src/content/contentScriptInjector.js",
+        "src/content/textImprover.js",
         "src/utils/tweetDeleter.js",
         "src/utils/storage.js",
         "src/utils/likeManager.js",
@@ -54,7 +59,9 @@
         "src/grammer/textBoxDetector.js",
         "src/grammer/sentenceImprover.js",
         "src/services/ollamaService.js",
-        "src/utils/debounce.js"
+        "src/utils/debounce.js",
+        "src/utils/tooltipManager.js",
+        "src/lib/tippy.js"
       ],
       "matches": [
         "https://twitter.com/*",
