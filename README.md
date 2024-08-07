@@ -8,6 +8,9 @@ Twitter Manager is an advanced Chrome extension designed to enhance your Twitter
 - Unlike All Tweets: Quickly remove all your likes from tweets.
 - AI-Powered Sentence Improvement: Get real-time suggestions to enhance your tweets as you type.
 
+## todo
+- Download videos from Twitter
+  
 ## Installation
 
 1. Clone this repository or download the source code.
