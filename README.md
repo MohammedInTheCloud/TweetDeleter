@@ -124,6 +124,14 @@ If you find this extension helpful, consider supporting the original author:
 Please note that while we've built upon the original work, any issues with this Chrome extension should be reported in this repository.
 
 
+
 ## Note on AI Integration
 
-The sentence improvement feature uses the Ollama AI service. Ensure you have the Ollama service running locally or adjust the `ollamaService.js` file to point to your preferred AI service endpoint.
+The sentence improvement feature is designed to use the Ollama AI service. However, in the current implementation:
+
+- Direct integration with Ollama is not yet available.
+- The extension uses a proxy server to communicate with Ollama.
+- Future updates will enable direct Ollama integration.
+
+**Ollama integration is a work in progress. Current implementation
+is a placeholder and will be fully implemented in future updates.**
