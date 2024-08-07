@@ -118,6 +118,7 @@ This project is based on the work of [lolarchiver](https://github.com/Lyfhael/De
 - **Author**: jmorganca , mchiang0610
 
 Also thanks to Mistral, Google, and Meta for their open-sourced LLM models.
+
 If you find this extension helpful, consider supporting the original author:
 - [Ko-fi: lolarchiver](https://ko-fi.com/lolarchiver)
 
