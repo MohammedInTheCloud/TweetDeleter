@@ -152,6 +152,7 @@ The sentence improvement feature is designed to use the Ollama AI service. Howev
 - I'm using this to run Ollama: https://github.com/MohammedInTheCloud/tired. To run it, use the following commands:
 
    > pnpm install
+  
    > node server
 
 
