@@ -57,6 +57,8 @@
         "src/utils/requestInterceptor.js",
         "src/utils/cookieUtils.js",
         "src/grammer/textBoxDetector.js",
+        "src/grammer/textAnalyzer.js",
+        "src/grammer/textHighlighter.js",
         "src/grammer/sentenceImprover.js",
         "src/services/ollamaService.js",
         "src/utils/debounce.js",

@@ -55,10 +55,16 @@ class SentenceImprover {
     }
 
     async improveText(text) {
-        const prompt = `Proofread and improve the following sentence , adjusting it to match a "Academic" tone. If improvements are needed, enclose the result in <improved> tags. If no improvements are needed, enclose the original text in <noneed> tags.
-
-        Sentence to proofread (aiming for a "Academic" tone) ,  Do not include any explanations or additional XML/HTML tags or comments :
-        <sentence>${text}</sentence>`; return await this.ollamaService.query('gemma2:2b', prompt, { stream: false });
+        const prompt = `Improve the following text. If improvements are needed, wrap each specific improvement in XML tags like this:
+            <improvement>
+              <original>original text</original>
+              <suggested>improved text</suggested>
+            </improvement>
+            If no improvements are needed, wrap the original sentence in <noneed> tags.
+            Do not provide any explanations or comments outside the XML tags.
+            Text to improve:
+            ${text}`;
+        return await this.ollamaService.query('mistral-nemo:12b-instruct-2407-q8_0', prompt, { stream: false });
     }
 }
 

@@ -1,12 +1,16 @@
 // src/content/textImprover.js
 
 import TextBoxDetector from '../grammer/textBoxDetector.js';
+import TextAnalyzer from '../grammer/textAnalyzer.js';
+import TextHighlighter from '../grammer/textHighlighter.js';
 import TooltipManager from '../utils/tooltipManager.js';
 
 class TextImprover {
     constructor() {
         this.textBoxDetector = new TextBoxDetector();
         this.tooltipManager = new TooltipManager();
+        this.textAnalyzer = new TextAnalyzer();
+        this.textHighlighter = new TextHighlighter();
         this.activeElement = null;
     }
 
@@ -27,14 +31,22 @@ class TextImprover {
     handleImprovedText(originalText, improvedText) {
         console.log('Original text:', originalText);
         console.log('Improved text:', improvedText);
-        
         if (this.activeElement) {
-            const improvements = this.parseImprovements(improvedText);
-            const tooltipContent = improvements.join('\n');
-            this.tooltipManager.createOrUpdateTooltip(this.activeElement, tooltipContent);
+            const improvements = this.textAnalyzer.parseImprovements(originalText, improvedText);
+            // Apply underlining
+            this.textHighlighter.applyUnderline(this.activeElement, improvements);
+            // Create tooltips for each improvement
+            improvements.forEach(improvement => {
+                const tooltipContent = `Suggestion: ${improvement.suggested}`;
+                const highlightElement = this.textHighlighter.getHighlightElement(improvement);
+                if (highlightElement) {
+                    this.tooltipManager.createOrUpdateTooltip(highlightElement, tooltipContent);
+                } else {
+                    console.warn('Highlight element not found for improvement:', improvement);
+                }
+            });
         }
     }
-
     parseImprovements(improvedText) {
         const regex = /<improved>(.*?)<\/improved>/g;
         const improvements = [];
