@@ -1,6 +1,19 @@
 # Twitter Manager
 
-Twitter Manager is an advanced Chrome extension designed to enhance your Twitter experience. It offers tweet management features and real-time sentence improvement powered by AI.
+Twitter Manager is an experimental Chrome extension designed to enhance your Twitter experience. It offers tweet management features, real-time sentence improvement, and AI-powered ad detection, all powered by Ollama .
+
+## Disclaimer
+
+This Twitter Manager Chrome extension is a fun, experimental project that I'm using to play around with various technologies and concepts. It's important to note:
+
+1. This is not an official Twitter/X product or service.
+2. The project is primarily for learning and experimentation purposes.
+3. Features may not be fully implemented or may change without notice.
+4. Use this extension at your own risk. I'm not responsible for any unintended consequences of using this extension on your Twitter/X account.
+5. The AI-powered features are still in development and may not function as described.
+6. This project is not intended for serious or professional use.
+
+Remember, the main goal here is to have fun and learn! If you decide to use or contribute to this project, please approach it with a spirit of curiosity and adventure. Enjoy tinkering!
 
 ## Features
 
@@ -8,6 +21,9 @@ Twitter Manager is an advanced Chrome extension designed to enhance your Twitter
 - Unlike All Tweets: Quickly remove all your likes from tweets.
 - AI-Powered Sentence Improvement: Get real-time suggestions to enhance your tweets as you type.
 
+## todo
+- Download videos from Twitter
+  
 ## Installation
 
 1. Clone this repository or download the source code.
@@ -117,6 +133,7 @@ This project is based on the work of [lolarchiver](https://github.com/Lyfhael/De
 - **Repository**: [ollama](https://github.com/ollama/ollama)
 - **Author**: jmorganca , mchiang0610
 
+Also thanks to Mistral, Google, and Meta for their open-sourced LLM models.
 
 If you find this extension helpful, consider supporting the original author:
 - [Ko-fi: lolarchiver](https://ko-fi.com/lolarchiver)
@@ -131,7 +148,13 @@ The sentence improvement feature is designed to use the Ollama AI service. Howev
 
 - Direct integration with Ollama is not yet available.
 - The extension uses a proxy server to communicate with Ollama.
-- Future updates will enable direct Ollama integration.
+- Future updates will enable tooltips on the search engine and when writing tweets. Currently, you can find improved text in the dev tool.
+- I'm using this to run Ollama: https://github.com/MohammedInTheCloud/tired. To run it, use the following commands:
+
+   > pnpm install
+  
+   > node server
+
 
 **Ollama integration is a work in progress. Current implementation
 is a placeholder and will be fully implemented in future updates.**
