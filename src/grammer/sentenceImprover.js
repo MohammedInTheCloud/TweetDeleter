@@ -47,24 +47,33 @@ class SentenceImprover {
 
     async improveIndividualSentences(sentences) {
         const improvedSentences = [];
-        for (const sentence of sentences) {
-            const improvedSentence = await this.improveText(sentence);
+        const contextWindow = 2; // Number of sentences to include as context
+
+        for (let i = 0; i < sentences.length; i++) {
+            const contextBefore = sentences.slice(Math.max(0, i - contextWindow), i).join(' ');
+            const contextAfter = sentences.slice(i + 1, i + 1 + contextWindow).join(' ');
+            const improvedSentence = await this.improveTextWithContext(sentences[i], contextBefore, contextAfter);
             improvedSentences.push(improvedSentence);
         }
         return improvedSentences;
     }
 
-    async improveText(text) {
-        const prompt = `Improve the following text. If improvements are needed, wrap each specific improvement in XML tags like this:
+    async improveTextWithContext(text, contextBefore, contextAfter) {
+        const prompt = `Improve the following text, considering the context provided. If improvements are needed, wrap each specific improvement in XML tags like this:
             <improvement>
               <original>original text</original>
               <suggested>improved text</suggested>
             </improvement>
             If no improvements are needed, wrap the original sentence in <noneed> tags.
             Do not provide any explanations or comments outside the XML tags.
-            Text to improve:
-            ${text}`;
+            Context before: ${contextBefore}
+            Text to improve: ${text}
+            Context after: ${contextAfter}`;
         return await this.ollamaService.query('mistral-nemo:12b-instruct-2407-q8_0', prompt, { stream: false });
+    }
+
+    async improveText(text) {
+        return this.improveTextWithContext(text, '', '');
     }
 }
 

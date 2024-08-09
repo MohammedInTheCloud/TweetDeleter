@@ -16,10 +16,8 @@ class TextHighlighter {
     this.copyStyles(inputElement, editableDiv);
 
     // Set initial content
-    editableDiv.innerHTML = this.escapeHtml(
-      inputElement.value || inputElement.textContent
-    );
-    console.log("Initial content set:", editableDiv.innerHTML);
+    editableDiv.textContent = inputElement.value || inputElement.textContent;
+    console.log("Initial content set:", editableDiv.textContent);
 
     // Insert editable div after the input element
     inputElement.insertAdjacentElement("afterend", editableDiv);
@@ -49,7 +47,7 @@ class TextHighlighter {
   handleInput(event) {
     const editableDiv = event.target;
     const originalInput = this.originalInputs.get(editableDiv);
-    originalInput.value = editableDiv.innerText;
+    originalInput.value = editableDiv.textContent;
     console.log(
       "Input handled, original input value updated:",
       originalInput.value
@@ -60,143 +58,38 @@ class TextHighlighter {
     console.log("Applying highlights to input:", inputElement);
     console.log("Improvements:", improvements);
 
-    let editableDiv = this.originalInputs.has(inputElement.nextElementSibling)
-      ? inputElement.nextElementSibling
+    let editableDiv = this.originalInputs.has(inputElement.nextElementSibling) 
+      ? inputElement.nextElementSibling 
       : this.setupHighlighting(inputElement);
 
-    let html = this.escapeHtml(editableDiv.innerText);
-    console.log("Original HTML:", html);
+    const text = editableDiv.textContent;
+    const highlightedFragments = [];
+    let lastIndex = 0;
 
-    const sortedImprovements = improvements.sort((a, b) => b.start - a.start);
-
-    sortedImprovements.forEach((imp, index) => {
-      const highlightColor = this.getHighlightColor(index);
-      html =
-        html.slice(0, imp.start) +
-        `<span class="highlight" style="background-color: ${highlightColor};">` +
-        html.slice(imp.start, imp.end) +
-        "</span>" +
-        html.slice(imp.end);
-    });
-
-    console.log("HTML with highlights:", html);
-
-    // Preserve cursor position
-    const selection = window.getSelection();
-    const range = selection.getRangeAt(0);
-    const startOffset = range.startOffset;
-    const startNode = range.startContainer;
-
-    editableDiv.innerHTML = html;
-
-    // Restore cursor position
-    this.restoreCursorPosition(editableDiv, startNode, startOffset);
-
-    console.log("Highlights applied, cursor position restored");
-    return editableDiv;
-  }
-
-  applyHighlightsToInput(inputElement, improvements) {
-    console.log("Applying highlights to input:", inputElement);
-    console.log("Improvements:", improvements);
-
-    let editableDiv = this.originalInputs.has(inputElement.nextElementSibling)
-      ? inputElement.nextElementSibling
-      : this.setupHighlighting(inputElement);
-
-    let html = this.escapeHtml(editableDiv.innerText);
-    console.log("Original HTML:", html);
-
-    const sortedImprovements = improvements.sort((a, b) => b.start - a.start);
-
-    sortedImprovements.forEach((imp, index) => {
-      const highlightColor = this.getHighlightColor(index);
-      html =
-        html.slice(0, imp.start) +
-        `<span class="highlight" style="background-color: ${highlightColor};">` +
-        html.slice(imp.start, imp.end) +
-        "</span>" +
-        html.slice(imp.end);
-    });
-
-    console.log("HTML with highlights:", html);
-
-    // Preserve cursor position
-    const selection = window.getSelection();
-    const range = selection.getRangeAt(0);
-    const startOffset = range.startOffset;
-    const startNode = range.startContainer;
-
-    editableDiv.innerHTML = html;
-
-    // Restore cursor position
-    this.restoreCursorPosition(editableDiv, startNode, startOffset);
-
-    console.log("Highlights applied, cursor position restored");
-    return editableDiv;
-  }
-  applyHighlights(editableDiv, improvements) {
-    let html = this.escapeHtml(editableDiv.innerText);
-    const sortedImprovements = improvements.sort((a, b) => b.start - a.start);
-
-    sortedImprovements.forEach((imp, index) => {
-      const highlightColor = this.getHighlightColor(index);
-      html =
-        html.slice(0, imp.start) +
-        `<span class="highlight" style="background-color: ${highlightColor};">` +
-        html.slice(imp.start, imp.end) +
-        "</span>" +
-        html.slice(imp.end);
-    });
-
-    // Preserve cursor position
-    const selection = window.getSelection();
-    const range = selection.getRangeAt(0);
-    const startOffset = range.startOffset;
-    const startNode = range.startContainer;
-
-    editableDiv.innerHTML = html;
-
-    // Restore cursor position
-    this.restoreCursorPosition(editableDiv, startNode, startOffset);
-  }
-
-  restoreCursorPosition(editableDiv, startNode, startOffset) {
-    const selection = window.getSelection();
-    const range = document.createRange();
-
-    let currentNode = editableDiv;
-    let currentOffset = 0;
-
-    const traverse = (node) => {
-      if (node.nodeType === Node.TEXT_NODE) {
-        if (node.length + currentOffset >= startOffset) {
-          range.setStart(node, startOffset - currentOffset);
-          return true;
-        }
-        currentOffset += node.length;
-      } else {
-        for (let i = 0; i < node.childNodes.length; i++) {
-          if (traverse(node.childNodes[i])) {
-            return true;
-          }
-        }
+    improvements.forEach((imp, index) => {
+      if (imp.start > lastIndex) {
+        highlightedFragments.push(document.createTextNode(text.slice(lastIndex, imp.start)));
       }
-      return false;
-    };
+      const span = document.createElement('span');
+      span.className = 'highlight';
+      span.dataset.index = index;
+      span.style.backgroundColor = this.getHighlightColor(index);
+      span.textContent = text.slice(imp.start, imp.end);
+      highlightedFragments.push(span);
+      lastIndex = imp.end;
+    });
 
-    traverse(currentNode);
+    if (lastIndex < text.length) {
+      highlightedFragments.push(document.createTextNode(text.slice(lastIndex)));
+    }
 
-    selection.removeAllRanges();
-    selection.addRange(range);
-    console.log('Cursor position restored');
+    editableDiv.innerHTML = '';
+    highlightedFragments.forEach(fragment => editableDiv.appendChild(fragment));
+
+    console.log("Highlights applied");
+    return editableDiv;
   }
 
-  escapeHtml(text) {
-    const div = document.createElement("div");
-    div.textContent = text;
-    return div.innerHTML;
-  }
   getHighlightColor(index) {
     const colors = [
       "rgba(255, 0, 0, 0.2)", // Red
